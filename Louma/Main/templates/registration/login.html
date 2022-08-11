@@ -1,0 +1,34 @@
+{% extends 'master.html' %} {% block body %}
+<main style="margin-left: 30%">
+  {% load static %}
+  <div class="account-area mt-70 mb-70">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="basic-login mb-50">
+            <h5 style="text-align: center">Connexion</h5>
+            <form method="POST">
+              {% csrf_token %} {% for field in form %} {{ field.errors }}
+              <label>{{field.label_tag}}</label>
+              <p>{{field}}</p>
+              {% endfor%}
+              <button type="submit" class="tp-in-btn w-100">
+                Se Connecter
+              </button>
+              <div class="mb-10 login-action fix">
+                <span class="forgot-login f-right">
+                  <a href="/register">Creer Un Compte&rarr;</a>
+                </span>
+                <span class="forgot-login f-left">
+                  <a href="{% url 'password_reset' %}">Mot de Passe Oublié?</a>
+                </span> 
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
